@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium.Chrome;
 using TestApp.Pages;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support;
 
 namespace TestApp.Tests
 {

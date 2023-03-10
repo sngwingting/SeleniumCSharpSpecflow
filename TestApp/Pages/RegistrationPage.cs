@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestApp;
 
 namespace TestApp.Pages
 {
     class RegistrationPage : DriverHelper
     {
+        CustomControls controls = new CustomControls();
 
         //IWebElements defined here
         #region
@@ -30,22 +32,22 @@ namespace TestApp.Pages
 
         //All methods related to registration page here
         #region
-        public void ChooseFemaleGender() => chooseGenderFemale.Click();
-        public void EnterFirstName(String firstname) => enterFirstName.SendKeys(firstname);
-        public void EnterLastName(String lastname) => enterLastName.SendKeys(lastname);
+        public void ChooseFemaleGender() => controls.clickElement(chooseGenderFemale);
+        public void EnterFirstName(String firstname) => controls.enterText(enterFirstName, firstname);
+        public void EnterLastName(String lastname) => controls.enterText(enterLastName, lastname);
 
         //Dropdowns
-        public void selectDate(String date) => dropdownDate.FindElement(By.XPath("//option[. = '"+date+"']")).Click();
-        public void selectMonth(String month) => dropdownDate.FindElement(By.XPath("//option[. = '"+month+"']")).Click();
-        public void selectYear(String year) => dropdownDate.FindElement(By.XPath("//option[. = '"+year+"']")).Click();
+        public void selectDate(String date) => controls.dropdownSelect(dropdownDate, date);
+        public void selectMonth(String month) => controls.dropdownSelect(dropdownDate, month);
+        public void selectYear(String year) => controls.dropdownSelect(dropdownDate, year);
 
-        public void EnterEmail(String email) => emailElement.SendKeys(email);
-        public void enterCompany(String company) => companyElement.SendKeys(company);
-        public void enterPassword(String psw) => passwordElement.SendKeys(psw);
+        public void EnterEmail(String email) => controls.enterText(emailElement,email);
+        public void enterCompany(String company) => controls.enterText(companyElement, company);
+        public void enterPassword(String psw) => controls.enterText(passwordElement, psw);
 
-        public void enterConfirmationPassword(String psw) => confirmPasswordElement.SendKeys(psw);
-        public void clickRegBtn() => btnregister.Click();
-        public void clickContinueBtn() => btnContinue.Click();
+        public void enterConfirmationPassword(String psw) => controls.enterText(confirmPasswordElement, psw);
+        public void clickRegBtn() => controls.clickElement(btnregister);
+        public void clickContinueBtn() => controls.clickElement(btnContinue);
 
         #endregion
     }
