@@ -9,8 +9,14 @@ namespace TestApp.Pages
 {
     class Homepage : DriverHelper
     {
-        IWebElement clsRegister => Driver.FindElement(By.CssSelector(".ico-register"));
+        CustomControls controls = new CustomControls();
+        By btnRegister =>By.CssSelector(".ico-register");
+        By btnLogin => By.LinkText("Log in"); 
+        By btnLogOut => By.LinkText("Log out");
 
-        public void clickRegBtn() => clsRegister.Click();
+        public void clickRegBtn() => controls.clickElement(btnRegister);
+        public void clickLoginBtn() => controls.clickElement(btnLogin);
+        public bool isLogOffExist() => controls.isDisplayed(btnLogOut);
+
     }
 }

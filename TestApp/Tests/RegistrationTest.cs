@@ -1,16 +1,8 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium.Chrome;
-using TestApp.Pages;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support;
+﻿
 
 namespace TestApp.Tests
 {
+    [Binding]
     public class registrationTest : DriverHelper
     {
         [SetUp]

@@ -14,18 +14,18 @@ namespace TestApp.Pages
 
         //IWebElements defined here
         #region
-        IWebElement chooseGenderFemale => Driver.FindElement(By.Id("gender-female"));
-        IWebElement enterFirstName => Driver.FindElement(By.Id("FirstName"));
-        IWebElement enterLastName => Driver.FindElement(By.Id("LastName"));
+        By chooseGenderFemale => By.Id("gender-female");
+        By enterFirstName => By.Id("FirstName");
+        By enterLastName => By.Id("LastName");
 
-        IWebElement dropdownDate => Driver.FindElement(By.Name("DateOfBirthDay"));
-        IWebElement emailElement => Driver.FindElement(By.Id("Email"));
-        IWebElement companyElement => Driver.FindElement(By.Id("Company"));
-        IWebElement passwordElement => Driver.FindElement(By.Id("Password"));
-        IWebElement confirmPasswordElement => Driver.FindElement(By.Id("ConfirmPassword"));
+        By dropdownDate => By.Name("DateOfBirthDay");
+        By emailElement => By.Id("Email");
+        By companyElement => By.Id("Company");
+        By passwordElement => By.Id("Password");
+        By confirmPasswordElement => By.Id("ConfirmPassword");
 
-        IWebElement btnregister => Driver.FindElement(By.Id("register-button"));
-        IWebElement btnContinue => Driver.FindElement(By.CssSelector(".register-continue-button"));
+        By btnregister => By.Id("register-button");
+        By btnContinue => By.CssSelector(".register-continue-button");
 
         #endregion
 

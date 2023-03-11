@@ -5,22 +5,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
+using NUnit.Framework;
+using System.Xml.Linq;
+using SeleniumExtras.WaitHelpers;
 
 namespace TestApp
 {
     public class CustomControls : DriverHelper
 
     {
-        WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
-        public void enterText(IWebElement webElement, String value) => webElement.SendKeys(value);
+        WaitManager waitInitialise = new WaitManager();
 
-        public void clickElement(IWebElement webElement) => webElement.Click();
-
-        public void dropdownSelect(IWebElement webElement, String value)
+        public void enterText(By by, String value)
         {
-            IWebElement element = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//option[. = '" + value + "']")));
-            element.Click();
+            waitInitialise.waitInitialize(by, waitInitialise.genericWait); 
+            Driver.FindElement(by).SendKeys(value);
         }
+
+        public void clickElement(By by)
+        {
+            waitInitialise.waitInitialize(by, waitInitialise.genericWait);
+            Driver.FindElement(by).Click();
+        }
+        public bool isDisplayed(By by)
+        {
+            waitInitialise.waitInitialize(by, waitInitialise.genericWait);
+            return Driver.FindElement(by).Displayed;
+        }
+
+        public void dropdownSelect(By by, String value)
+        {
+            waitInitialise.waitInitialize(by, waitInitialise.genericWait);
+            Driver.FindElement(by).Click();
+        }
+
     }
-    
 }
