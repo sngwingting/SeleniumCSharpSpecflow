@@ -21,7 +21,7 @@ namespace TestApp.Hooks
         public void BeforeScenarioRegistration()
         {
             ChromeOptions options = new ChromeOptions();
-            ooptions.AddArguments("start-maximized", "incognito", "--headless");
+            options.AddArguments("start-maximized", "incognito", "--headless");
             _driverHelper.Driver = new ChromeDriver(options);
         }
 
