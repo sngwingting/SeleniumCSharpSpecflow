@@ -1,6 +1,4 @@
-﻿using TechTalk.SpecFlow;
-
-namespace TestApp.Hooks
+﻿namespace TestApp.Hooks
 {
     [Binding]
     public sealed class Hooks1

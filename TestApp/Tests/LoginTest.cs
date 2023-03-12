@@ -1,7 +1,4 @@
-﻿using System.Security.Principal;
-using TechTalk.SpecFlow.Assist;
-
-namespace TestApp.Tests
+﻿namespace TestApp.Tests
 {
     [Binding]
     public class LoginTest

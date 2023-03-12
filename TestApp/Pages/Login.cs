@@ -1,5 +1,4 @@
-﻿
-namespace TestApp.Pages
+﻿namespace TestApp.Pages
 {
 
     class Login 

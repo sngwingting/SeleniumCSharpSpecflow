@@ -1,7 +1,4 @@
 ﻿
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using TestApp.Pages;
-
 namespace TestApp.Tests
 {
     [Binding]
