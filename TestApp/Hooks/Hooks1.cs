@@ -1,4 +1,6 @@
-﻿namespace TestApp.Hooks
+﻿using OpenQA.Selenium;
+
+namespace TestApp.Hooks
 {
     [Binding]
     public sealed class Hooks1
@@ -19,7 +21,7 @@
         public void BeforeScenarioRegistration()
         {
             ChromeOptions options = new ChromeOptions();
-            options.AddArguments("start-maximized", "incognito");
+            ooptions.AddArguments("start-maximized", "incognito", "--headless");
             _driverHelper.Driver = new ChromeDriver(options);
         }
 
