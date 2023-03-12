@@ -36,21 +36,30 @@ namespace TestApp.Tests
         [When(@"User clicks on header login button")]
         public void UserOnLoginPage()
         {
-            hp.clickLoginBtn();
+            testBase.UITest(() =>
+            {
+                hp.clickLoginBtn();
+            });
         }
 
         [When(@"User enters email and password (.*) and (.*)")]
         public void WhenUserEntersEmailAndPassword(string email, string password)
         {
-            login.EnterEmail(email);
-            login.EnterPsw(password);
+            testBase.UITest(() =>
+            {
+                login.EnterEmail(email);
+                login.EnterPsw(password);
+            });
         }
 
 
         [When(@"User clicks on Login button")]
         public void loginbtnClick()
         {
-            login.submitLogin();
+            testBase.UITest(() =>
+            {
+                login.submitLogin();
+            }); 
         }
 
         [Then(@"Log Off button is displayed")]
