@@ -1,4 +1,12 @@
-﻿namespace TestApp
+﻿/*
+ * This class defines all the custom controls as well as the
+ * basic actions performed such as click, assertion etc...
+ * 
+ * 
+ */
+
+
+namespace TestApp
 {
     public class CustomControls
 
