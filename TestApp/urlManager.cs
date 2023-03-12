@@ -1,5 +1,13 @@
 ﻿using OpenQA.Selenium;
 namespace TestApp
+
+    /*
+     * This class contains all URL-related properties and methods
+     * A baseurl property has been added but this can be further 
+     * expanded by adding domains and urls of different pages
+     * 
+     */
+
 {
     public class urlManager
     {

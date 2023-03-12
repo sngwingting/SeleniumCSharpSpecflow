@@ -1,5 +1,11 @@
 ﻿using OpenQA.Selenium.Support.Extensions;
 
+/*
+ * This is a base class that can be used to define utility methods 
+ * Here, a method has been implemented to take a screenshot on failing a test
+ * 
+ */
+
 namespace TestApp
 {
     public class TestBase

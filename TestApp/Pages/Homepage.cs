@@ -1,4 +1,9 @@
-﻿namespace TestApp.Pages
+﻿/*
+ * Class containing all IWebelements for the page and their specific methods
+ * 
+ */
+
+namespace TestApp.Pages
 {
     class Homepage 
     {
