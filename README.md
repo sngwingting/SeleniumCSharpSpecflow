@@ -27,4 +27,12 @@ Once HTML file is generated we can open it in a browser to view pass/fail result
 Screenshots are automatically generated on failed step and appear in the Screenshots folder. <br />
 Naming convention used for naming the PNG screenshot is: <br />
 feature_timestamp.png <br />
-Example: Login_20230312103909137.png
+Example: Login_20230312103909137.png <br />
+## Installation
+You can clone the repo using Git bash or if you have Visual Studio 2022, you can just clone it directly from the IDE <br />
+![image](https://user-images.githubusercontent.com/127433509/224557492-0b40faae-2108-41e0-951a-80895002c817.png) <br />
+Once opened, make sure all Selenium and Specflow packages are correctly installed from the nuget package manager. <br />
+Open test explorer window (Test -> Test Explorer) then build the project to discover the existing tests <br />
+You can run the test by right-clicking on the chosen test and click Run <br />
+Note: the registration test is headless by default <br />
+Login test may fail as the demo website resets their users every hour therefore we need to register the user before running the login test <br />
