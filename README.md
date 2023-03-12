@@ -1,4 +1,4 @@
-# TestApp
+# SeleniumCSharpSpecflow
 Fun test automation side project in Selenium C# Nunit with Specflow designed to upskill and learn more
 ## Project description
 This project uses Selenium C# NUnit with Specflow Framework which uses easy-to-read Gherkin syntax. <br />
