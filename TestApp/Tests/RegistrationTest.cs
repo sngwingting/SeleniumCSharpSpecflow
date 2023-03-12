@@ -1,50 +1,60 @@
 ﻿
 
+using TestApp.Pages;
+
 namespace TestApp.Tests
 {
     [Binding]
-    public class registrationTest : DriverHelper
+    public class registrationTest
+
     {
-        [SetUp]
-        public void SetUp()
+        private DriverHelper _driverHelper;
+        private RegistrationPage regPage;
+        private Homepage hp;
+        private urlManager UrlManager;
+
+        public registrationTest(DriverHelper driverHelper)
         {
-            Driver = new ChromeDriver();
+            _driverHelper = driverHelper;
+            regPage = new RegistrationPage(_driverHelper.Driver);
+            hp = new Homepage(_driverHelper.Driver);
+            UrlManager = new urlManager(_driverHelper.Driver);
         }
-        [TearDown]
-        protected void TearDown()
+
+
+        [When(@"User clicks on header Registration button")]
+        public void btnRegistrationClick()
         {
-            Driver.Quit();
-        }
-
-        [Test]
-        public void RegistrationTest()
-        {
-            config configurations = new config();
-            Homepage hp = new Homepage();
-            RegistrationPage regPage = new RegistrationPage();
-            urlManager UrlManager = new urlManager();
-
-            //Driver.Navigate().GoToUrl("https://demo.nopcommerce.com/");
-            UrlManager.openUrl(Driver, UrlManager.baseUrl);
-
-            Driver.Manage().Window.Maximize();
-
             hp.clickRegBtn();
-            regPage.ChooseFemaleGender();
-            regPage.EnterFirstName("Stacey");
-            regPage.EnterLastName("Ng Wing Ting");
-            regPage.selectDate("13");
-            regPage.selectMonth("February");
-            regPage.selectYear("1998");
-            regPage.EnterEmail("stacey@test.com");
-            regPage.enterCompany("RAPP IO");
-            regPage.enterPassword("Testing123");
-            regPage.enterConfirmationPassword("Testing123");
-            regPage.clickRegBtn();
-            regPage.clickContinueBtn();
-
-            Thread.Sleep(2000);
-
         }
+
+        [When(@"User fills in form details (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*) and (.*)")]
+        public void fillRegFormDetails (String gender, string fname, string lname, string date, string month, string year, string email, string company, string psw, string confPsw)
+        {
+            regPage.ChooseGender(gender);
+            regPage.EnterFirstName(fname);
+            regPage.EnterLastName(lname);
+            regPage.selectDate(date);
+            regPage.selectMonth(month);
+            regPage.selectYear(year);
+            regPage.EnterEmail(email);
+            regPage.enterCompany(company);
+            regPage.enterPassword(psw);
+            regPage.enterConfirmationPassword(confPsw);
+        }
+
+        [When(@"User clicks on Register button")]
+        public void WhenUserClicksOnRegisterButton()
+        {
+            regPage.clickRegBtn();
+        }
+
+        [Then(@"We can click the Continue button")]
+        public void ThenTheContinueButtonIsDisplayed()
+        {
+            regPage.clickContinueBtn();
+        }
+
     }
+    
 }

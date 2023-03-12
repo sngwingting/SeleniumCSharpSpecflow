@@ -8,17 +8,24 @@ using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 using System.Xml.Linq;
 using SeleniumExtras.WaitHelpers;
+using TestApp.Pages;
 
 namespace TestApp
 {
-    public class CustomControls : DriverHelper
+    public class CustomControls
 
     {
-        WaitManager waitInitialise = new WaitManager();
+        IWebDriver Driver;
+        WaitManager waitInitialise;
+        public CustomControls(IWebDriver webDriver)
+        {
+            this.Driver = webDriver;
+            waitInitialise = new WaitManager(webDriver);
+        }
 
         public void enterText(By by, String value)
         {
-            waitInitialise.waitInitialize(by, waitInitialise.genericWait); 
+            waitInitialise.waitInitialize(by, waitInitialise.genericWait);
             Driver.FindElement(by).SendKeys(value);
         }
 

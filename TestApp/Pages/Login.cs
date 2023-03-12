@@ -1,16 +1,18 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace TestApp.Pages
 {
 
-    class Login : DriverHelper
+    class Login 
     {
-        CustomControls controls = new CustomControls();
+        CustomControls controls;
+        private IWebDriver Driver;
+
+
+        public Login(IWebDriver driver)
+        {
+            this.Driver = driver;
+            controls = new CustomControls(driver);
+        }
 
         //IWebElements defined here
         #region

@@ -1,20 +1,19 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestApp;
-
-namespace TestApp.Pages
+﻿namespace TestApp.Pages
 {
-    class RegistrationPage : DriverHelper
+    class RegistrationPage
     {
-        CustomControls controls = new CustomControls();
+        CustomControls controls;
+        private IWebDriver Driver;
+        public RegistrationPage(IWebDriver driver)
+        {
+            this.Driver = driver;
+            controls = new CustomControls(driver);
+        }
 
         //IWebElements defined here
         #region
-        By chooseGenderFemale => By.Id("gender-female");
+        By genderFemale => By.Id("gender-female");
+        By genderMale => By.Id("gender-male");
         By enterFirstName => By.Id("FirstName");
         By enterLastName => By.Id("LastName");
 
@@ -32,7 +31,16 @@ namespace TestApp.Pages
 
         //All methods related to registration page here
         #region
-        public void ChooseFemaleGender() => controls.clickElement(chooseGenderFemale);
+        public void ChooseGender(string gender)
+        {
+            if(gender.Equals("female"))
+            {
+                controls.clickElement(genderFemale);
+            }else
+            {
+                controls.clickElement(genderMale);
+            }
+        }
         public void EnterFirstName(String firstname) => controls.enterText(enterFirstName, firstname);
         public void EnterLastName(String lastname) => controls.enterText(enterLastName, lastname);
 

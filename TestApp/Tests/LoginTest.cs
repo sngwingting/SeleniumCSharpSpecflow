@@ -1,53 +1,56 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium.Chrome;
-using TestApp.Pages;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support;
-using TechTalk.SpecFlow;
+﻿using System.Security.Principal;
+using TechTalk.SpecFlow.Assist;
 
 namespace TestApp.Tests
 {
-    public class LoginTest : DriverHelper
+    [Binding]
+    public class LoginTest
     {
-        [SetUp]
-        public void SetUp()
+        private DriverHelper _driverHelper;
+        private Login login;
+        private Homepage hp;
+        private urlManager UrlManager;
+
+
+        public LoginTest(DriverHelper driverHelper)
         {
-            Driver = new ChromeDriver();
+            _driverHelper = driverHelper;
+            login = new Login(_driverHelper.Driver);
+            hp = new Homepage(_driverHelper.Driver);
+            UrlManager = new urlManager(_driverHelper.Driver);
         }
-        [TearDown]
-        protected void TearDown()
+
+        [Given(@"User is on home page")]
+        public void UserOnHomepage()
         {
-            Driver.Quit();
+            UrlManager.openUrl(_driverHelper.Driver, UrlManager.baseUrl);
         }
 
-        [Test]
-        public void loginTest()
+        [When(@"User clicks on header login button")]
+        public void UserOnLoginPage()
         {
-            config configurations = new config();
-            Login login = new Login();
-            Homepage hp = new Homepage();
-            RegistrationPage regPage = new RegistrationPage();
-            urlManager UrlManager = new urlManager();
-
-            //Driver.Navigate().GoToUrl("https://demo.nopcommerce.com/");
-            UrlManager.openUrl(Driver, UrlManager.baseUrl);
-
-            Driver.Manage().Window.Maximize();
             hp.clickLoginBtn();
-            login.EnterEmail("stacey@test.com");
-            login.EnterPsw("Testing123");
-            login.submitLogin();
-
-            //Thread.Sleep(7000);
-            hp.isLogOffExist();
-
-            Thread.Sleep(7000);
-
         }
+
+        [When(@"User enters email and password (.*) and (.*)")]
+        public void WhenUserEntersEmailAndPassword(string email, string password)
+        {
+            login.EnterEmail(email);
+            login.EnterPsw(password);
+        }
+
+
+        [When(@"User clicks on Login button")]
+        public void loginbtnClick()
+        {
+            login.submitLogin();
+        }
+
+        [Then(@"Log Off button is displayed")]
+        public void AssertLogOff()
+        {
+            hp.isLogOffExist();
+        }
+    
         }
 }

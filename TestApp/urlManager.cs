@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace TestApp
 {
-    public class urlManager : DriverHelper
+    public class urlManager
     {
+        IWebDriver Driver;
+        public urlManager(IWebDriver webDriver)
+        {
+            this.Driver = webDriver;
+        }
+
         public String baseUrl
         {
             get { return "https://demo.nopcommerce.com/";  }

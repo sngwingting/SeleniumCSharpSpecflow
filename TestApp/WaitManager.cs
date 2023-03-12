@@ -8,9 +8,15 @@ using SeleniumExtras.WaitHelpers;
 
 namespace TestApp
 {
-    public class WaitManager : DriverHelper
+    public class WaitManager 
     {
         WebDriverWait waitDriver;
+        IWebDriver Driver;
+        
+        public WaitManager(IWebDriver webDriver)
+        {
+            this.Driver = webDriver;
+        }
         public int genericWait
         {
             get { return 10; }

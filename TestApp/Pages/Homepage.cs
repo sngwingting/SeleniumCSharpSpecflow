@@ -1,15 +1,17 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestApp.Pages
+﻿namespace TestApp.Pages
 {
-    class Homepage : DriverHelper
+    class Homepage 
     {
-        CustomControls controls = new CustomControls();
+        CustomControls controls;
+        //private IWebDriver Driver;
+        IWebDriver _driverHelper;
+
+        public Homepage(IWebDriver driverHelper)
+        {
+            _driverHelper = driverHelper;
+            controls = new CustomControls(driverHelper);
+        }
+
         By btnRegister =>By.CssSelector(".ico-register");
         By btnLogin => By.LinkText("Log in"); 
         By btnLogOut => By.LinkText("Log out");
