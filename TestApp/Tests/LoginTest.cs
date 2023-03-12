@@ -10,6 +10,8 @@ namespace TestApp.Tests
         private Login login;
         private Homepage hp;
         private urlManager UrlManager;
+        private TestBase testBase;
+        private string feature = "Login";
 
 
         public LoginTest(DriverHelper driverHelper)
@@ -18,12 +20,17 @@ namespace TestApp.Tests
             login = new Login(_driverHelper.Driver);
             hp = new Homepage(_driverHelper.Driver);
             UrlManager = new urlManager(_driverHelper.Driver);
+            testBase = new TestBase(_driverHelper.Driver, feature);
         }
 
         [Given(@"User is on home page")]
         public void UserOnHomepage()
         {
-            UrlManager.openUrl(_driverHelper.Driver, UrlManager.baseUrl);
+            testBase.UITest(() =>
+            {
+                Console.WriteLine("Url opened: " + UrlManager.baseUrl);
+                UrlManager.openUrl(_driverHelper.Driver, UrlManager.baseUrl);
+            });          
         }
 
         [When(@"User clicks on header login button")]
@@ -49,7 +56,12 @@ namespace TestApp.Tests
         [Then(@"Log Off button is displayed")]
         public void AssertLogOff()
         {
-            hp.isLogOffExist();
+            testBase.UITest(() =>
+            {
+                hp.isLogOffExist();
+            });
+
+            
         }
     
         }
