@@ -31,6 +31,7 @@ Example: Login_20230312103909137.png <br />
 ## Installation
 You can clone the repo using Git bash or if you have Visual Studio 2022, you can just clone it directly from the IDE <br />
 ![image](https://user-images.githubusercontent.com/127433509/224557492-0b40faae-2108-41e0-951a-80895002c817.png) <br />
+URL: https://github.com/sngwingting/SeleniumCSharpSpecflow.git <br />
 Once opened, make sure all Selenium and Specflow packages are correctly installed from the nuget package manager. <br />
 Open test explorer window (Test -> Test Explorer) then build the project to discover the existing tests <br />
 You can run the test by right-clicking on the chosen test and click Run <br />
