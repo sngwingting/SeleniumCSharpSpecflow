@@ -35,5 +35,4 @@ URL: https://github.com/sngwingting/SeleniumCSharpSpecflow.git <br />
 Once opened, make sure all Selenium and Specflow packages are correctly installed from the nuget package manager. <br />
 Open test explorer window (Test -> Test Explorer) then build the project to discover the existing tests <br />
 You can run the test by right-clicking on the chosen test and click Run <br />
-Note: the registration test is headless by default <br />
 Login test may fail as the demo website resets their users every hour therefore we need to register the user before running the login test <br />
